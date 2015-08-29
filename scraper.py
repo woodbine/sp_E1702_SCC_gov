@@ -68,7 +68,8 @@ for link in links:
         csvYr = link.text.split('(')[0].strip().split(' ')[-1]
         csvMth = link.text.split('(')[0].strip().split(' ')[-2].strip()[:3]
         csvMth = convert_mth_strings(csvMth.upper())
-        filename = entity_id + "_" + csvYr + "_" + csvMth
+        if ' to ' in link.text:
+            filename = 'Q'+entity_id + "_" + csvYr + "_" + csvMth
         todays_date = str(datetime.now())
         file_url = url.strip()
         validFilename = validateFilename(filename)
